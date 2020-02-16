@@ -45,11 +45,8 @@ struct isEmpty{
 };
 struct solveState findEmpty(int board[9][9]){
     struct solveState x;
-    for( x.row = 0; x.row < 9; x.row++){
-        
+    for( x.row = 0; x.row < 9; x.row++){ 
         for(x.col = 0; x.col < 9; x.col++){
-            //            printf("\n%d %d", row, col);
-            
             if(board[x.row][x.col] == 0){
                 x.solved = false;
                 return x;
@@ -133,8 +130,6 @@ struct isEmpty findEmptyBox(int board[9][9]){
             }
             if(empty == true){
                 x.state = true;
-                
-                //                   printf("%d %d", x.row, x.col);
                 return x;
             }
         }
@@ -151,7 +146,6 @@ void clearBox(int board[9][9], struct isEmpty x){
     }
 }
 bool insertBox(int board[9][9]){
-    //    int filledBoxCount = 0;
     bool safe = false;
     int rowIndex[4];
     int colIndex[4];
@@ -166,7 +160,6 @@ bool insertBox(int board[9][9]){
     }
     for(int i = 0; i < 4; i++){
         colIndex[i] = rand() % 3;
-        //        printf("%d %d\n", rowIndex[i], colIndex[i]);
     }
     while(safe == false){
         boxVal = rand() % 9 + 1;
@@ -183,19 +176,8 @@ bool insertBox(int board[9][9]){
 }
 
 int main(int argc, const char * argv[]) {
-    //    struct isEmpty x;
     int board[9][9] = {0};
-    //    int currentBox [2] = {0, 1};
-    //    int boardStart;
-    srand (static_cast<unsigned int>(time(NULL)));
-    //    boardStart = rand() % 9 + 1;
-    //    board [1][1] = boardStart;
-    
-    
-    //    printBoard(board);
-    //    x = findEmptyBox(board);
-    //    printf("%d, %d | %d\n", x.row, x.col, x.state);
-    
+    srand (static_cast<unsigned int>(time(NULL))); 
     insertBox(board);
     printf("Puzzle:\n");
     printBoard(board);
@@ -208,7 +190,6 @@ int main(int argc, const char * argv[]) {
         printf("no solution for this puzzle exists\n");
         return 1;
     }
-    
-    // insert code here...
+
     return 0;
 }
